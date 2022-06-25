@@ -1,10 +1,7 @@
-// product관련된 route를 모아서 관리함
-
 const express = require("express");
 const router = express.Router();
 const mysql = require("../mysql");
 
-// app -> router로 수정, url에 /api/product 부분 삭제
 router.get("/category", async (req, res) => {
   const categoryList = await mysql.query("categoryList");
   res.send(categoryList);
@@ -13,6 +10,15 @@ router.get("/category", async (req, res) => {
 router.get("/category/:product_category_id", async (req, res) => {
   const { product_category_id } = req.params;
   const categoryList = await mysql.query("categoryDetail", product_category_id);
+  res.send(categoryList);
+});
+
+// post방식으로 조회
+router.post("/category/search", async (req, res) => {
+  const categoryList = await mysql.query(
+    "categoryListByCondition",
+    req.body.param
+  );
   res.send(categoryList);
 });
 
@@ -30,13 +36,33 @@ router.put("/category/:product_category_id", async (req, res) => {
   res.send(result);
 });
 
-router.delete(
-  "/api/product/category/:product_category_id",
-  async (req, res) => {
-    const { product_category_id } = req.params;
+router.delete("/category/:product_category_id", async (req, res) => {
+  const { product_category_id } = req.params;
+  const count = await mysql.query("productCount", product_category_id);
+  if (count[0].count === 0) {
     const result = await mysql.query("categoryDelete", product_category_id);
     res.send(result);
+  } else {
+    res.send({ status: 501, count: count[0] });
   }
-);
+});
+
+router.post("/", async (req, res) => {
+  const result = await mysql.query("productInsert", req.body.param);
+  res.send(result);
+});
+
+router.get("/:product_id", async (req, res) => {
+  const productDetail = await mysql.query(
+    "productDetail",
+    req.params.product_id
+  );
+  res.send(productDetail[0]);
+});
+
+router.get("/", async (req, res) => {
+  const productList = await mysql.query("productList");
+  res.send(productList);
+});
 
 module.exports = router;

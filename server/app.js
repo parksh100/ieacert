@@ -13,7 +13,7 @@ const multer = require("multer");
 
 // require("dotenv").config({ path: "mysql/.env" });
 require("dotenv").config({ path: `mysql/.env.${app.get("env")}` });
-console.log(process.env);
+// console.log(process.env);
 const mysql = require("./mysql");
 
 require("dotenv").config({ path: `nodemailer/.env.${app.get("env")}` });
