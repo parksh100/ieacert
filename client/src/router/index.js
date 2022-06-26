@@ -23,6 +23,14 @@ const routes = [
       import(
         /* webpackChunkName: "product" */ '../views/category/CategoryView.vue'
       )
+  },
+  {
+    path: '/supplier/create',
+    name: 'product_create',
+    component: () =>
+      import(
+        /* webpackChunkName: "supplier" */ '../views/supplier/SupplierCreate.vue'
+      )
   }
 ]
 

@@ -114,7 +114,5 @@ export default {
 }
 </script>
 <style>
-header {
-  margin-bottom: 70px;
-}
+
 </style>

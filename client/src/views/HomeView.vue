@@ -1,50 +1,5 @@
 <template>
   <div>
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-lg sticky-top"
-    >
-      <div class="container">
-        <a href="" class="navbar-brand align-middle">
-          <h3 class="m-0">
-            <img src="@/assets/IEALogo.png" alt="logo" height="36px" />
-            IEA Certification
-          </h3>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-3 mb-lg-0">
-            <li class="nav-item">
-              <a href="#top" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#top" class="nav-link">Intro</a>
-            </li>
-            <li class="nav-item">
-              <a href="#top" class="nav-link">Services</a>
-            </li>
-            <li class="nav-item">
-              <a href="#top" class="nav-link">Slogan</a>
-            </li>
-            <li class="nav-item">
-              <a href="#top" class="nav-link">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a href="#top" class="nav-link">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
     <section id="top">
       <div
@@ -287,6 +242,9 @@ export default {
   },
   unmounted() {},
   methods: {
+    goToMenu (path) {
+      this.$router.push({ path: path })
+    }
   }
 }
 </script>

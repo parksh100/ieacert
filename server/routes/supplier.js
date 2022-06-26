@@ -21,7 +21,8 @@ router.post("/search", async (req, res) => {
   res.send(supplierList);
 });
 
-router.post("/", async (req, res) => {
+// Supplier 생성
+router.post("/", async (req, res) => { // app.js에 이미 라우터에 supplier가 붙어 있으니 여기서는 '/'만
   const result = await mysql.query("supplierInsert", req.body.param);
   res.send(result);
 });
