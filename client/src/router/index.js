@@ -55,7 +55,16 @@ const routes = [
       import(
         /* webpackChunkName: "product" */ '../views/product/ProductCreateView.vue'
       )
+  },
+  {
+    path: '/product/list',
+    name: 'product_list',
+    component: () =>
+      import(
+        /* webpackChunkName: "product" */ '../views/product/ProductListView.vue'
+      )
   }
+
 ]
 
 const router = createRouter({

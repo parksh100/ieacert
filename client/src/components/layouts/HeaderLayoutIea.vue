@@ -62,7 +62,11 @@
                 >Product Create</a>
             </li>
             <li class="nav-item">
-              <a href="#top" class="nav-link">Contact</a>
+               <a
+                class="nav-link"
+                :class="{ active: $route.path == '/product/list' }"
+                @click="goToMenu('/product/list')"
+                >Product List</a>
             </li>
           </ul>
         </div>

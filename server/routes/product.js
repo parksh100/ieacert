@@ -53,6 +53,7 @@ router.post("/", async (req, res) => {
   res.send(result);
 });
 
+
 router.get("/:product_id", async (req, res) => {
   const productDetail = await mysql.query(
     "productDetail",
@@ -61,6 +62,8 @@ router.get("/:product_id", async (req, res) => {
   res.send(productDetail[0]);
 });
 
+
+// 제품 리스트 블러오기 api
 router.get("/", async (req, res) => {
   const productList = await mysql.query("productList");
   res.send(productList);
