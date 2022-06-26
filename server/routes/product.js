@@ -47,6 +47,7 @@ router.delete("/category/:product_category_id", async (req, res) => {
   }
 });
 
+// 제품등록 api
 router.post("/", async (req, res) => {
   const result = await mysql.query("productInsert", req.body.param);
   res.send(result);

@@ -48,10 +48,18 @@
                 >Supplier</a>
             </li>
             <li class="nav-item">
-              <a href="#top" class="nav-link">Slogan</a>
+             <a
+                class="nav-link"
+                :class="{ active: $route.path == '/supplier/list' }"
+                @click="goToMenu('/supplier/list')"
+                >Supplier List</a>
             </li>
             <li class="nav-item">
-              <a href="#top" class="nav-link">Gallery</a>
+              <a
+                class="nav-link"
+                :class="{ active: $route.path == '/product/create' }"
+                @click="goToMenu('/product/create')"
+                >Product Create</a>
             </li>
             <li class="nav-item">
               <a href="#top" class="nav-link">Contact</a>

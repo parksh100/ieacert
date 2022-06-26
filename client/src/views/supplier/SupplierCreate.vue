@@ -3,23 +3,33 @@
     <div class="row mb-3">
       <label class="col-sm-2 col-form-label">Supplier Name</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" v-model.trim="supplier.supplier_name" />
+        <input
+          type="text"
+          class="form-control"
+          v-model.trim="supplier.supplier_name"
+        />
       </div>
     </div>
-
     <div class="row mb-3">
       <label class="col-sm-2 col-form-label">Business No</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" v-model.trim="supplier.business_no" />
+        <input
+          type="text"
+          class="form-control"
+          v-model.trim="supplier.business_no"
+        />
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label">CEO Name</label>
+      <label class="col-sm-2 col-form-label">CEO</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" v-model.trim="supplier.ceo_name" />
+        <input
+          type="text"
+          class="form-control"
+          v-model.trim="supplier.ceo_name"
+        />
       </div>
     </div>
-
     <div class="row mb-3">
       <label class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-10">
@@ -52,7 +62,7 @@
         />
       </div>
     </div>
-<div class="row mb-3">
+    <div class="row mb-3">
       <label class="col-sm-2 col-form-label">Contact Phone</label>
       <div class="col-sm-10">
         <input
@@ -62,17 +72,16 @@
         />
       </div>
     </div>
-<div class="row mb-3">
+    <div class="row mb-3">
       <label class="col-sm-2 col-form-label">Contact Email</label>
       <div class="col-sm-10">
         <input
-          type="text"
+          type="email"
           class="form-control"
           v-model.trim="supplier.contact_email"
         />
       </div>
     </div>
-
     <button class="btn btn-secondary me-1" @click="goToList">목록</button>
     <button class="btn btn-primary" @click="doSave">저장</button>
   </div>
@@ -90,6 +99,7 @@ export default {
         phone: '',
         address: '',
         contact_name: '',
+        contact_phone: '',
         contact_email: '',
         business_no: '',
         ceo_name: ''
@@ -103,11 +113,7 @@ export default {
   methods: {
     async doSave() {
       if (this.supplier.supplier_name === '') {
-        return this.$swal('Supplier Name을 입력하세요.') // nn항목에 대해 만들어주면 됨
-      }
-
-      if (this.supplier.phone === '') {
-        return this.$swal('Phone을 입력하세요.')
+        return this.$swal('Supplier Name을 입력하세요.')
       }
 
       this.$swal({
@@ -123,24 +129,26 @@ export default {
         if (result.isConfirmed) {
           const loader = this.$loading.show({ canCancel: false })
 
-          const r = await this.$post(
-            'http://localhost:3000/api/supplier',
-            { param: this.supplier }
-          )
+          const r = await this.$post('http://localhost:3000/api/supplier', {
+            param: this.supplier
+          })
 
           loader.hide()
 
           console.log(r)
 
-          if (r.status === 201) {
+          if (r.status === 200) {
             this.$swal('공급자 정보가 저장되었습니다.')
-            // this.$router.push({ path: '/template/listtodetail' })
+            this.$router.push({
+              path: '/supplier/detail',
+              query: { supplier_id: r.data.insertId }
+            })
           }
         }
       })
     },
     goToList() {
-      this.$router.push({ name: 'ListToDetailView' })
+      this.$router.push({ path: '/supplier/list' })
     }
   }
 }

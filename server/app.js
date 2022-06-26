@@ -1,6 +1,5 @@
 const express = require("express");
 const session = require("express-session");
-
 const app = express();
 const fs = require("fs");
 const morgan = require("morgan");
@@ -8,10 +7,8 @@ const rfs = require("rotating-file-stream");
 const path = require("path");
 const cors = require("cors");
 const multer = require("multer");
+const xlsx = require("xlsx");
 
-// console.log(app.get("env"));
-
-// require("dotenv").config({ path: "mysql/.env" });
 require("dotenv").config({ path: `mysql/.env.${app.get("env")}` });
 // console.log(process.env);
 const mysql = require("./mysql");
@@ -34,7 +31,7 @@ let sess = {
   cookie: {
     httpOnly: true, // document.cookie 해도 쿠키 정보를 볼 수 없음
     secure: false, // https
-    maxAge: 1000 * 60 * 60, // 쿠키가 유지되는 시간(60분)
+    maxAge: 1000 * 60 * 60, // 쿠키가 유지되는 시간
   },
 };
 
@@ -47,7 +44,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// 파일명 만드는 함수
 const generator = (time, index) => {
   if (!time) return "file.log";
 
@@ -61,15 +57,14 @@ const generator = (time, index) => {
 };
 
 const accessLogStream = rfs.createStream(generator, {
-  interval: "1d", // 1d 면 하루단위, 실무에서는 주로 하루단위로
+  interval: "1d", // 1d
   size: "10M",
-  path: path.join(__dirname, "log"), // 어디에 만드느냐
+  path: path.join(__dirname, "log"),
 });
 
 // app.use(morgan("combined", { stream: accessLogStream }));
 app.use(
   morgan("combined", {
-    // combined는 로그를 남기는 폼 같은건데..그냥 쓰면 됨
     stream: accessLogStream,
     skip: function (req, res) {
       return res.statusCode < 400;
@@ -86,7 +81,6 @@ const imageStorage = multer.diskStorage({
   },
 });
 
-// multer라는 애로 파일 업로드 할건데 그때 스토리지는 이렇게 정의된 얘를 쓸거야
 const imageUpload = multer({ storage: imageStorage });
 
 const fileStorage = multer.diskStorage({
@@ -98,7 +92,6 @@ const fileStorage = multer.diskStorage({
   },
 });
 
-// multer라는 애로 파일 업로드 할건데 그때 스토리지는 이렇게 정의된 얘를 쓸거야
 const fileUpload = multer({ storage: fileStorage });
 
 const productRoute = require("./routes/product");
@@ -107,10 +100,19 @@ app.use("/api/product", productRoute);
 const supplierRoute = require("./routes/supplier");
 app.use("/api/supplier", supplierRoute);
 
+const customerRoute = require("./routes/customer");
+app.use("/api/customer", customerRoute);
+
+const shipperRoute = require("./routes/shipper");
+app.use("/api/shipper", shipperRoute);
+
+const orderRoute = require("./routes/order");
+app.use("/api/order", orderRoute);
 
 // app.post("/login", (req, res) => {
 //   const { email, pw } = req.body.param;
 //   // 데이터베이스에 사용자가 있는지, 비밀번호는 맞는지 체크
+
 //   req.session.email = email;
 //   req.session.isLogined = true;
 //   req.session.save((err) => {
@@ -127,14 +129,7 @@ app.use("/api/supplier", supplierRoute);
 //   }
 // });
 
-// // 모든 라이터 마다  if(!req.session.email){
-// //     res.redirect("/login")
-// //   }하는 것은 비효율 적임,
-// // 어떤 요청이 들어오더라도 로그인 상태인지 체크하도록 함!
 // app.all("*", (req, res, next) => {
-//   // all은 get, post, put, delete모든 것을 아우르는 것
-//   // 파라미터 next사용
-//   // 모든 라우터 앞에 이부분이 실행되고 로그인 되었으면 next통해서 다음 코드로 넘어감
 //   if (req.session.email) {
 //     console.log(req.cookies);
 //     next();
@@ -157,7 +152,6 @@ app.get("/api/file/:filename", (req, res) => {
   }
 });
 
-// multer는 순서가 path와 함수 사이에
 app.post(
   "/api/upload/file",
   fileUpload.single("attachment"),
@@ -175,7 +169,20 @@ app.post(
 );
 
 app.post(
-  "/api/upload/image    ",
+  "/api/upload/excel",
+  fileUpload.single("attachment"),
+  async (req, res) => {
+    const workbook = xlsx.readFile(req.file.path);
+    const firstSheetName = workbook.SheetNames[0];
+    const firstSheet = workbook.Sheets[firstSheetName];
+    const firstSheetJson = xlsx.utils.sheet_to_json(firstSheet);
+
+    res.send(firstSheetJson);
+  }
+);
+
+app.post(
+  "/api/upload/image",
   imageUpload.single("attachment"),
   async (req, res) => {
     const fileInfo = {
