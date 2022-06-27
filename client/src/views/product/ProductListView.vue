@@ -19,13 +19,13 @@
         </button>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
       <div
         class="col-xl-3 col-lg-4 col-md-6 mb-2"
         :key="product.product_id"
         v-for="product in products"
       >
-        <div class="card">
+        <div class="card shadow-lg">
           <img
             :src="`http://localhost:3000/static/images/${product.img1}`"
             alt=""

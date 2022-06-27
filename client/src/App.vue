@@ -14,3 +14,7 @@ export default {
   components: { FooterLayout, HeaderLayoutIea }
 }
 </script>
+<style>
+*{font-family: 'Nanum Gothic', sans-serif;}
+
+</style>
