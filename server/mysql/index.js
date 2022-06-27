@@ -34,6 +34,21 @@ const query = async (alias, values) => {
   );
 };
 
+// 롤백기능 구현
+const getConnection = async () => {
+  return new Promise((resolve, reject) =>
+    pool.getConnection((err, conn) => {
+      if (err) {
+        console.log(err);
+        reject({ err });
+      } else {
+        resolve(conn);
+      }
+    })
+  );
+};
+
 module.exports = {
   query,
+  getConnection,
 };

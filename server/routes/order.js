@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
 
   // 1. connection 가져오기
   const conn = await mysql.getConnection();
-  await conn.beginTransaction();
+  await conn.beginTransaction(); // 디비에 바로 들어가지않고 대기하는 상태로 만들기위함.
 
   // 2. 주문의 헤더 정보 (order) 생성
   conn.query(sql["orderInsert"], req.body.header, async (err, rows, fields) => {
@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
             res.status(200).send(rows);
           }
 
-          await conn.release();
+          await conn.release(); // connection 10사용했는데 돌려주는 코드
         }
       );
     }

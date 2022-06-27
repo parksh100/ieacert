@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
   res.send(result);
 });
 
-
+// 제품상세페이지 api
 router.get("/:product_id", async (req, res) => {
   const productDetail = await mysql.query(
     "productDetail",

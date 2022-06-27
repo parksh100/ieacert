@@ -7,7 +7,7 @@
       <div class="container">
         <a href="/" class="navbar-brand align-middle">
           <h3 class="m-0">
-            <img src="@/assets/IEALogo.png" alt="logo" height="36px" class="" />
+            <img src="@/assets/IEALogo.png" alt="logo" height="42px" class="" />
             IEA Certification
           </h3>
         </a>
@@ -67,6 +67,20 @@
                 :class="{ active: $route.path == '/product/list' }"
                 @click="goToMenu('/product/list')"
                 >Product List</a>
+            </li>
+            <li class="nav-item">
+               <a
+                class="nav-link"
+                :class="{ active: $route.path == '/order/create' }"
+                @click="goToMenu('/order/create')"
+                >Order</a>
+            </li>
+             <li class="nav-item">
+               <a
+                class="nav-link"
+                :class="{ active: $route.path == '/shipper' }"
+                @click="goToMenu('/shipper')"
+                >Shipper</a>
             </li>
           </ul>
         </div>
