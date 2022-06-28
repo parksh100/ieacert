@@ -87,8 +87,58 @@ const routes = [
       import(
         /* webpackChunkName: "shipper" */ '../views/shipper/ShipperView.vue'
       )
-  }
+  },
 
+  // iea페이지
+
+  {
+    path: '/aboutiea/about',
+    name: 'aboutiea/about',
+    component: () =>
+      import(
+        /* webpackChunkName: "aboutiea" */ '../views/aboutiea/AboutView.vue'
+      )
+  },
+  {
+    path: '/aboutiea/ethic',
+    name: 'aboutiea/ethic',
+    component: () =>
+      import(
+        /* webpackChunkName: "aboutiea" */ '../views/aboutiea/EthicView.vue'
+      )
+  },
+  {
+    path: '/aboutiea/impartial',
+    name: 'aboutiea/impartial',
+    component: () =>
+      import(
+        /* webpackChunkName: "aboutiea" */ '../views/aboutiea/ImpartialView.vue'
+      )
+  },
+  {
+    path: '/aboutiea/logo',
+    name: 'aboutiea/logo',
+    component: () =>
+      import(
+        /* webpackChunkName: "aboutiea" */ '../views/aboutiea/LogoGuideView.vue'
+      )
+  },
+  {
+    path: '/aboutiea/policy',
+    name: 'aboutiea/policy',
+    component: () =>
+      import(
+        /* webpackChunkName: "aboutiea" */ '../views/aboutiea/PolicyView.vue'
+      )
+  },
+  {
+    path: '/aboutiea/location',
+    name: 'aboutiea/location',
+    component: () =>
+      import(
+        /* webpackChunkName: "aboutiea" */ '../views/aboutiea/LocationView.vue'
+      )
+  }
 ]
 
 const router = createRouter({

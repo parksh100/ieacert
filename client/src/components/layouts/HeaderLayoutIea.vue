@@ -2,15 +2,40 @@
   <!-- form태그는 div로 변경 -->
   <div>
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-lg sticky-top mb-5"
+      class="
+        navbar navbar-expand-lg navbar-light
+        bg-light
+        py-3
+        shadow-lg
+        sticky-top
+        mb-5
+      "
     >
       <div class="container">
-        <a href="/" class="navbar-brand align-middle">
-          <h3 class="m-0">
-            <img src="@/assets/IEALogo.png" alt="logo" height="42px" class="" />
+        <!-- <a href="/" class="navbar-brand align-middle">
+          <h3 class="m-0 fw-bold">
+            <img
+              src="@/assets/IEALogo.png"
+              alt="logo"
+              height="24px"
+              width="30"
+              class="d-inline-block"
+            />
             IEA Certification
           </h3>
-        </a>
+        </a> -->
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="/">
+            <img
+              src="@/assets/IEALogo.png"
+              alt=""
+              width=""
+              height="40"
+              class="d-inline-block"
+            />
+            아이이에이인증원
+          </a>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -24,64 +49,184 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-3 mb-lg-0">
-            <li class="nav-item">
-              <!-- <a href="#top" class="nav-link">Home</a> -->
-                         <a
+            <!-- <li class="nav-item">
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/' }"
                 @click="goToMenu('/')"
-                >Home</a
+                >IEA</a
               >
+            </li> -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                IEA
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/aboutiea/about' }"
+                    @click="goToMenu('/aboutiea/about')"
+                    >About IEA</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/aboutiea/ethic' }"
+                    @click="goToMenu('/aboutiea/ethic')"
+                    >IEA윤리강령</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/aboutiea/impartial' }"
+                    @click="goToMenu('/aboutiea/impartial')"
+                    >공평성선언문</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/aboutiea/policy' }"
+                    @click="goToMenu('/aboutiea/policy')"
+                    >IEA방침</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/aboutiea/logo' }"
+                    @click="goToMenu('/aboutiea/logo')"
+                    >로고사용지침</a
+                  >
+                </li>
+                <!-- <li>
+                  <a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/aboutiea/location' }"
+                    @click="goToMenu('/aboutiea/location')"
+                    >찾아오시는길</a
+                  >
+                </li> -->
+              </ul>
             </li>
-            <li class="nav-item">
-               <a
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                개인자격
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">자격소개</a></li>
+                <li><a class="dropdown-item" href="#">자격조회</a></li>
+                <li><a class="dropdown-item" href="#">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                등록신청
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">자격등록신청</a></li>
+                <li><a class="dropdown-item" href="#">등록비용</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                고객센터
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">공지사항</a></li>
+                <li><a class="dropdown-item" href="#">부정심사원고발</a></li>
+                <li><a class="dropdown-item" href="#">고객불만/이의제기</a></li>
+                <li><a class="dropdown-item" href="#">이메일문의</a></li>
+              </ul>
+            </li>
+
+            <!-- <li class="nav-item">
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/product/category' }"
                 @click="goToMenu('/product/category')"
-                >Category</a>
+                >Category</a
+              >
             </li>
             <li class="nav-item">
-               <a
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/supplier/create' }"
                 @click="goToMenu('/supplier/create')"
-                >Supplier</a>
+                >Supplier</a
+              >
             </li>
             <li class="nav-item">
-             <a
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/supplier/list' }"
                 @click="goToMenu('/supplier/list')"
-                >Supplier List</a>
+                >Supplier List</a
+              >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 :class="{ active: $route.path == '/product/create' }"
                 @click="goToMenu('/product/create')"
-                >Product Create</a>
+                >Product Create</a
+              >
             </li>
             <li class="nav-item">
-               <a
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/product/list' }"
                 @click="goToMenu('/product/list')"
-                >Product List</a>
+                >Product List</a
+              >
             </li>
             <li class="nav-item">
-               <a
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/order/create' }"
                 @click="goToMenu('/order/create')"
-                >Order</a>
+                >Order</a
+              >
             </li>
-             <li class="nav-item">
-               <a
+            <li class="nav-item">
+              <a
                 class="nav-link"
                 :class="{ active: $route.path == '/shipper' }"
                 @click="goToMenu('/shipper')"
-                >Shipper</a>
-            </li>
+                >Shipper</a
+              >
+            </li> -->
           </ul>
         </div>
       </div>
@@ -96,7 +241,7 @@ export default {
   //   }
   // },
   methods: {
-    goToMenu(path) {
+    goToMenu (path) {
       this.$router.push({ path: path })
     }
     // login과 똑같은데 user정보를 모두 지워준다.
@@ -110,7 +255,11 @@ export default {
 }
 </script>
 <style scoped>
-.nav-link{
+.nav-link {
   cursor: pointer;
+}
+
+.dropdown-menu {
+  font-size: 0.8rem;
 }
 </style>
