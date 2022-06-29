@@ -1,32 +1,37 @@
-<template></template>
-<style scoped>
-#footer .sns img {
-  border-radius: 0.75rem;
-  transition: 0.4s ease;
-}
-#footer .sns img:hover {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
+<template>
+  <div class="container">
+    <footer
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    >
+      <div class="col-md-4 d-flex align-items-center">
+        <a
+          href="/"
+          class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+        >
+          <svg class="bi" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="text-muted">©️ 2022 IEA Certification Inc.</span>
+      </div>
 
-#footer .footer-1 .footer-logo {
-  width: 80%;
-}
-
-#footer h4 {
-  color: #29407b;
-}
-
-#footer li {
-  font-size: 1.1rem;
-}
-
-#footer .footer-4 i,
-$footer .footer-4 p {
-  font-size: 1.1rem;
-}
-
-#footer .footer-4 .info-body {
-  text-indent: -0.75rem;
-  margin-left: 0.75rem;
-}
-</style>
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="text-muted" href="#"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-muted" href="#"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-muted" href="#"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</template>

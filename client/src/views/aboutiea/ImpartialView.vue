@@ -2,7 +2,7 @@
   <div class="container">
     <h3>공평성 선언문</h3>
     <hr class="my-5" />
-    <div class="mt-5 minifooter">
+    <div class="mt-5">
       <p>
         IEA의 모든 임직원은 자격인증 활동을 수행함에 있어서 공평성 관리의
         중요성을 이해하며 자격인증 활동의 공정한 적용을 위해 다음 사항을
@@ -66,7 +66,4 @@ export default {
 }
 </script>
 <style scoped>
-.minifooter {
-  margin-bottom: 100px;
-}
 </style>

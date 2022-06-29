@@ -8,15 +8,13 @@
 // import HeaderLayout from '@/components/layouts/HeaderLayout.vue'
 import FooterLayout from '@/components/layouts/FooterLayout.vue'
 import HeaderLayoutIea from './components/layouts/HeaderLayoutIea.vue'
-// import FooterLayoutIea from './components/layouts/FooterLayoutIea.vue'
 // import HeaderLayoutIea from './components/layouts/HeaderLayoutIea.vue'
 
 export default {
-  components: { HeaderLayoutIea, FooterLayout }
+  components: { FooterLayout, HeaderLayoutIea }
 }
 </script>
 <style>
-* {
-  font-family: 'Nanum Gothic', sans-serif;
-}
+*{font-family: 'Nanum Gothic', sans-serif;}
+
 </style>

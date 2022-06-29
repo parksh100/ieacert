@@ -2,7 +2,7 @@
   <div class="container">
     <h3>INTRODUCTION</h3>
     <hr class="my-5" />
-    <div class="mt-5 minifooter">
+    <div class="mt-5">
       <p>IEA인증원은</p>
       <p>
         개인역량 적격성인증에 대한 국제적으로 인증받는 표준인 ISO/IEC 17024:2012
@@ -60,7 +60,4 @@ export default {
 }
 </script>
 <style scoped>
-.minifooter {
-  margin-bottom: 200px;
-}
 </style>
