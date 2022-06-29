@@ -3,7 +3,6 @@
     <h3>IEA 경영방침</h3>
     <hr class="my-5" />
     <div class="mt-5 minifooter">
-
       <ol style="line-height: 250%" class="mt-5">
         <li>
           IEA는 최상의 인증 서비스 제공을 통하여 자격인증의 신뢰성 확보와
