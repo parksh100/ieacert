@@ -2,14 +2,7 @@
   <!-- form태그는 div로 변경 -->
   <div>
     <nav
-      class="
-        navbar navbar-expand-lg navbar-light
-        bg-light
-        py-3
-        shadow-lg
-        sticky-top
-        mb-5
-      "
+      class="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-lg sticky-top mb-5"
     >
       <div class="container">
         <!-- <a href="/" class="navbar-brand align-middle">
@@ -49,14 +42,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-3 mb-lg-0">
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a
-                class="nav-link"
-                :class="{ active: $route.path == '/' }"
-                @click="goToMenu('/')"
-                >IEA</a
-              >
-            </li> -->
+                    class="nav-link"
+                    :class="{ active: $route.path == '/' }"
+                    @click="goToMenu('/')"
+                    >Home</a
+                  >
+
+            </li>
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -131,9 +126,24 @@
                 개인자격
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">자격소개</a></li>
-                <li><a class="dropdown-item" href="#">자격조회</a></li>
-                <li><a class="dropdown-item" href="#">FAQ</a></li>
+                <li><a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/certification/intro' }"
+                    @click="goToMenu('/certification/intro')"
+                    >자격소개</a
+                  ></li>
+                <li><a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/certification/search' }"
+                    @click="goToMenu('/certification/search')"
+                    >자격조회</a
+                  ></li>
+                <li><a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/certification/faq' }"
+                    @click="goToMenu('/certification/faq')"
+                    >FAQ</a
+                  ></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -148,8 +158,24 @@
                 등록신청
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">자격등록신청</a></li>
-                <li><a class="dropdown-item" href="#">등록비용</a></li>
+                <li><a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/register/process' }"
+                    @click="goToMenu('/register/process')"
+                    >등록절차</a
+                  ></li>
+                <li><a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/register/apply' }"
+                    @click="goToMenu('/register/apply')"
+                    >등록신청</a
+                  ></li>
+                <li><a
+                    class="nav-link"
+                    :class="{ active: $route.path == '/register/apply' }"
+                    @click="goToMenu('/register/apply')"
+                    >등록비용</a
+                  ></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -241,7 +267,7 @@ export default {
   //   }
   // },
   methods: {
-    goToMenu (path) {
+    goToMenu(path) {
       this.$router.push({ path: path })
     }
     // login과 똑같은데 user정보를 모두 지워준다.

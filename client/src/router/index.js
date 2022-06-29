@@ -138,6 +138,55 @@ const routes = [
       import(
         /* webpackChunkName: "aboutiea" */ '../views/aboutiea/LocationView.vue'
       )
+  },
+  {
+    path: '/certification/intro',
+    name: 'certification/intro',
+    component: () =>
+      import(
+        /* webpackChunkName: "certification" */ '../views/certification/IntroCertView.vue'
+      )
+  },
+
+  {
+    path: '/certification/search',
+    name: 'certification/search',
+    component: () =>
+      import(
+        /* webpackChunkName: "certification" */ '../views/certification/SearchCertView.vue'
+      )
+  },
+
+  {
+    path: '/certification/faq',
+    name: 'certification/faq',
+    component: () =>
+      import(
+        /* webpackChunkName: "certification" */ '../views/certification/CertFaqView.vue'
+      )
+  },
+  {
+    path: '/register/apply',
+    name: 'register/apply',
+    component: () =>
+      import(
+        /* webpackChunkName: "register" */ '../views/register/CertRegisterView.vue'
+      )
+  }, {
+    path: '/register/fee',
+    name: 'register/fee',
+    component: () =>
+      import(
+        /* webpackChunkName: "register" */ '../views/register/CertRegisterFeeView.vue'
+      )
+  },
+  {
+    path: '/register/process',
+    name: 'register/process',
+    component: () =>
+      import(
+        /* webpackChunkName: "register" */ '../views/register/CertRegisterProcessView.vue'
+      )
   }
 ]
 

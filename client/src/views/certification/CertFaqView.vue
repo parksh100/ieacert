@@ -1,5 +1,5 @@
 <template>
-<div>자격소개페이지</div>
+<div>FAQ페이지</div>
 </template>
 <script>
 export default {
