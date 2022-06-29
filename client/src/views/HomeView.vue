@@ -728,7 +728,7 @@ export default {
   background-image: url('@/assets/greyBackground.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 30vh;
+  height: 45vh;
 }
 
 #cta .section-content {

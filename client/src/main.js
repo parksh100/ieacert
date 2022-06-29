@@ -5,11 +5,14 @@ import store from './store'
 import mixin from './mixins'
 import VueSweetalert2 from 'vue-sweetalert2'
 import VueLoading from 'vue-loading-overlay'
+import BootstrapVue3 from 'bootstrap-vue-3'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import 'sweetalert2/dist/sweetalert2.min.css'
 import 'vue-loading-overlay/dist/vue-loading.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 
 const app = createApp(App)
 app.use(store)
@@ -17,6 +20,7 @@ app.use(router)
 app.use(VueSweetalert2)
 app.use(VueLoading)
 app.mixin(mixin)
+app.use(BootstrapVue3)
 
 app.directive('focus', {
   mounted(el) {
