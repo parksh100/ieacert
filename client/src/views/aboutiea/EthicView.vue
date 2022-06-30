@@ -2,7 +2,7 @@
   <div class="container">
     <h3>IEA윤리강령</h3>
     <hr class="my-5" />
-    <div class="mt-5">
+    <div class="mt-5 minifooter">
       <p>IEA는 윤리적 행동과 가치를 준수하기 위해 최선을 다하고 있습니다.</p>
       <p>
         IEA의 핵심가치인 ‘적격성’, ‘신뢰성’, ‘지속성’ 은 IEA를 운영하는 기반이
@@ -55,4 +55,7 @@ export default {
 }
 </script>
 <style scoped>
+.minifooter {
+  margin-bottom: 150px;
+}
 </style>
