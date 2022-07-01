@@ -5,21 +5,33 @@
 		<div class="row">
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="inputKoName" class="col-sm-2 col-form-label fw-bold"
+					<label for="inputKoName" class="col-sm-3 col-form-label fw-bold"
 						>국문성명</label
 					>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="inputKoName" />
+					<div class="col-sm-9">
+						<input
+							type="text"
+							class="form-control"
+							id="inputKoName"
+							placeholder="홍길동"
+							v-model.trim="applier.name_kor"
+						/>
 					</div>
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="inputEnName" class="col-sm-2 col-form-label fw-bold"
+					<label for="inputEnName" class="col-sm-3 col-form-label fw-bold"
 						>영문성명</label
 					>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="inputEnName" />
+					<div class="col-sm-9">
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Hong, Gil-dong"
+							id="inputEnName"
+							v-model.trim="applier.name_eng"
+						/>
 					</div>
 				</div>
 			</div>
@@ -28,21 +40,31 @@
 		<div class="row">
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="phone" class="col-sm-2 col-form-label fw-bold"
+					<label for="mobile" class="col-sm-3 col-form-label fw-bold"
 						>휴대폰번호</label
 					>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="phone" />
+					<div class="col-sm-9">
+						<input
+							type="text"
+							class="form-control"
+							id="mobile"
+							v-model.trim="applier.mobile"
+						/>
 					</div>
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="email" class="col-sm-2 col-form-label fw-bold"
+					<label for="email" class="col-sm-3 col-form-label fw-bold"
 						>이메일주소</label
 					>
-					<div class="col-sm-10">
-						<input type="email" class="form-control" id="email" />
+					<div class="col-sm-9">
+						<input
+							type="email"
+							class="form-control"
+							id="email"
+							v-model.trim="applier.email"
+						/>
 					</div>
 				</div>
 			</div>
@@ -51,59 +73,59 @@
 		<div class="row">
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="scheme" class="col-sm-2 col-form-label fw-bold"
+					<label for="scheme" class="col-sm-3 col-form-label fw-bold"
 						>인증규격</label
 					>
-					<div class="col-sm-10">
+					<div class="col-sm-9">
 						<div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
 								type="checkbox"
-								id="inlineCheckbox1"
+								id="qms"
 								value="qms"
+								v-model="cert_spec"
 							/>
-							<label class="form-check-label" for="inlineCheckbox1"
-								>ISO9001</label
-							>
+							<label class="form-check-label" for="qms">ISO9001</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
 								type="checkbox"
-								id="inlineCheckbox2"
+								id="ems"
 								value="ems"
+								v-model="cert_spec"
 							/>
-							<label class="form-check-label" for="inlineCheckbox2"
-								>ISO14001</label
-							>
+							<label class="form-check-label" for="ems">ISO14001</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
 								type="checkbox"
-								id="inlineCheckbox3"
+								id="ohsms"
 								value="ohsms"
+								v-model="cert_spec"
 							/>
-							<label class="form-check-label" for="inlineCheckbox3"
-								>ISO45001</label
-							>
+							<label class="form-check-label" for="ohsms">ISO45001</label>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- 인증유형 -->
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="type" class="col-sm-2 col-form-label fw-bold"
+					<label for="type" class="col-sm-3 col-form-label fw-bold"
 						>인증유형</label
 					>
-					<div class="col-sm-10">
+					<div class="col-sm-9">
 						<div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
-								type="radio"
 								name="inlineRadioOptions"
 								id="inlineRadio1"
-								value="new"
+								type="radio"
+								value="NewCert"
+								v-model="applier.type_cert"
 							/>
 							<label class="form-check-label" for="inlineRadio1"
 								>최초인증</label
@@ -112,10 +134,11 @@
 						<div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
-								type="radio"
 								name="inlineRadioOptions"
 								id="inlineRadio2"
-								value="transfer"
+								type="radio"
+								value="Transfer"
+								v-model="applier.type_cert"
 							/>
 							<label class="form-check-label" for="inlineRadio2"
 								>전환인증</label
@@ -124,10 +147,11 @@
 						<div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
-								type="radio"
-								name="inlineRadioOptions"
 								id="inlineRadio3"
-								value="renew"
+								name="inlineRadioOptions"
+								type="radio"
+								value="Renewal"
+								v-model="applier.type_cert"
 							/>
 							<label class="form-check-label" for="inlineRadio3"
 								>갱신인증</label
@@ -140,209 +164,169 @@
 		<div class="row">
 			<div class="col-6">
 				<div class="mb-3 row">
-					<label for="phone" class="col-sm-2 col-form-label fw-bold"
+					<label for="phone" class="col-sm-3 col-form-label fw-bold"
 						>기본주소</label
 					>
 					<div class="col-sm-3">
-						<input type="text" class="form-control" id="" readonly />
+						<input
+							type="text"
+							class="form-control"
+							id=""
+							v-model="applier.postcode"
+							readonly
+						/>
 					</div>
-					<div class="col-sm-3">
-						<button class="btn btn-secondary">우편번호</button>
+					<div class="col-sm-4">
+						<button class="btn btn-secondary" @click="showZipCode">
+							우편번호찾기
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="col-6">
+				<div class="mb-3 row"></div>
+			</div>
+
+			<div class="col-7 ps-5">
 				<div class="mb-3 row">
-					<label for="email" class="col-sm-2 col-form-label fw-bold"
-						>이메일주소</label
-					>
+					<label for="address" class="col-sm-2 col-form-label fw-bold"></label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="email" />
+						<input
+							type="text"
+							class="form-control"
+							id="address"
+							placeholder="기본주소"
+							v-model="applier.applier_address"
+						/>
+					</div>
+				</div>
+			</div>
+			<div class="col-5">
+				<div class="mb-3 row">
+					<div class="col-sm-12, col-md-9">
+						<input
+							type="email"
+							class="form-control"
+							id="email"
+							placeholder="상세주소"
+							v-model="applier.detail_address"
+						/>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- <div class="mt-5 row p-auto" id="main-content">
-			<div class="d-flex justify-content-center">
-				<div>
-					<tr>
-						<th scope="col">국문성명</th>
-						<td scope="col"><input type="text" class="form-control" /></td>
-						<th scope="col">영문성명</th>
-						<td scope="col"><input type="text" class="form-control" /></td>
-					</tr>
-					<tr>
-						<th scope="col">휴대폰번호</th>
-						<td scope="col"><input type="text" class="form-control" /></td>
-						<th scope="col">이메일주소</th>
-						<td scope="col"><input type="text" class="form-control" /></td>
-					</tr>
-					<tr>
-						<th scope="col">인증규격</th>
-						<td scope="col" colspan="3">
-							<div class="col-10">
-								<div class="form-check form-check-inline">
-									<input
-										class="form-check-input"
-										type="checkbox"
-										id="inlineCheckbox1"
-										value="qms"
-									/>
-									<label class="form-check-label" for="inlineCheckbox1"
-										>ISO9001</label
-									>
-								</div>
-								<div class="form-check form-check-inline">
-									<input
-										class="form-check-input"
-										type="checkbox"
-										id="inlineCheckbox2"
-										value="ems"
-									/>
-									<label class="form-check-label" for="inlineCheckbox2"
-										>ISO14001</label
-									>
-								</div>
-								<div class="form-check form-check-inline">
-									<input
-										class="form-check-input"
-										type="checkbox"
-										id="inlineCheckbox3"
-										value="ohsms"
-									/>
-									<label class="form-check-label" for="inlineCheckbox3"
-										>ISO45001</label
-									>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th scope="col">인증유형</th>
-						<td scope="col" colspan="3">
-							<div class="form-check form-check-inline">
-								<input
-									class="form-check-input"
-									type="radio"
-									name="inlineRadioOptions"
-									id="inlineRadio1"
-									value="new"
-								/>
-								<label class="form-check-label" for="inlineRadio1"
-									>최초인증</label
-								>
-							</div>
-							<div class="form-check form-check-inline">
-								<input
-									class="form-check-input"
-									type="radio"
-									name="inlineRadioOptions"
-									id="inlineRadio2"
-									value="transfer"
-								/>
-								<label class="form-check-label" for="inlineRadio2"
-									>전환인증</label
-								>
-							</div>
-							<div class="form-check form-check-inline">
-								<input
-									class="form-check-input"
-									type="radio"
-									name="inlineRadioOptions"
-									id="inlineRadio3"
-									value="renew"
-								/>
-								<label class="form-check-label" for="inlineRadio3"
-									>갱신인증</label
-								>
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<th scope="col">기본주소</th>
-						<td scope="col" colspan="3">
-							<div class="row">
-								<div class="col-3">
-									<input
-										type="text"
-										class="form-control"
-										placeholder="우편번호"
-										v-model="ZipCode"
-										readonly
-									/>
-								</div>
-								<div class="col-9">
-									<button
-										class="btn btn-secondary btn-sm ms-1"
-										@click="showZipCode()"
-									>
-										우편번호
-									</button>
-								</div>
-							</div>
-							<input
-								type="text"
-								class="form-control mt-1"
-								placeholder="기본주소"
-								readonly
-								v-model="addressKakao"
-							/>
-							<input
-								type="text"
-								class="form-control mt-1"
-								placeholder="상세주소"
-							/>
-						</td>
-					</tr>
-
-					<tr>
-						<th scope="row">신청비</th>
-						<td colspan="3" class="fw-bold">
-							30,000원
-							<span class="fw-light">
-								(계좌번호: 기업은행 664-021577-04-011)</span
-							>
-						</td>
-					</tr>
-
-					<tr>
-						<th scope="row" rowspan="4">제출자료</th>
-						<td class="text-center">졸업증명서</td>
-						<td colspan="2" class="fw-bold">
-							<div class="mb-3">
-								<input class="form-control" type="file" id="education" />
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-center">이력서</td>
-						<td colspan="2" class="fw-bold">
-							<div class="mb-3">
-								<input class="form-control" type="file" id="career" />
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-center">경력기술서</td>
-						<td colspan="2" class="fw-bold">
-							<div class="mb-3">
-								<input class="form-control" type="file" id="jobDescription" />
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-center">경력증명서</td>
-						<td colspan="2" class="fw-bold">
-							<div class="mb-3">
-								<input class="form-control" type="file" id="careerEvidence" />
-							</div>
-						</td>
-					</tr>
+		<!-- 신청비안내 -->
+		<div class="row">
+			<div class="col-6">
+				<div class="mb-3 row">
+					<label for="phone" class="col-sm-3 col-form-label fw-bold"
+						>신청비</label
+					>
+					<div class="col-sm-9">
+						<h6 class="pt-2">30,000원<span></span></h6>
+					</div>
 				</div>
 			</div>
-		</div> -->
+			<div class="col-6">
+				<div class="mb-3 row">
+					<label for="" class="col-sm-3 col-form-label fw-bold"></label>
+					<div class="col-sm-9">
+						<!-- <input type="email" class="form-control" id="email" /> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 첨부서류 -->
+		<div class="row">
+			<div class="col-5">
+				<div class="mb-3 row">
+					<label for="phone" class="col-sm-3 col-form-label fw-bold"
+						>첨부서류</label
+					>
+					<div class="col-sm-9 text-center mt-2">이력서</div>
+				</div>
+			</div>
+			<div class="col-7">
+				<div class="mb-3">
+					<input
+						class="form-control"
+						type="file"
+						id="career"
+						accept="application/pdf"
+						@change="uploadFile($event.target.files)"
+					/>
+				</div>
+			</div>
+			<div class="col-5">
+				<div class="mb-3 row">
+					<label for="phone" class="col-sm-3 col-form-label fw-bold"
+						>첨부서류</label
+					>
+					<div class="col-sm-9 text-center mt-2">경력증명서</div>
+				</div>
+			</div>
+			<div class="col-7">
+				<div class="mb-3">
+					<input
+						class="form-control"
+						type="file"
+						id="careerRef"
+						accept="application/pdf"
+					/>
+				</div>
+			</div>
+
+			<div class="col-5">
+				<div class="mb-3 row">
+					<label for="phone" class="col-sm-3 col-form-label fw-bold"
+						>첨부서류</label
+					>
+					<div class="col-sm-9 text-center mt-2">합격증</div>
+				</div>
+			</div>
+			<div class="col-7">
+				<div class="mb-3">
+					<input
+						class="form-control"
+						type="file"
+						id="testCert"
+						accept="application/pdf"
+					/>
+				</div>
+			</div>
+
+			<div class="col-5">
+				<div class="mb-3 row">
+					<label for="phone" class="col-sm-3 col-form-label fw-bold"
+						>첨부서류</label
+					>
+					<div class="col-sm-9 text-center mt-2">심사로그</div>
+				</div>
+			</div>
+			<div class="col-7">
+				<div class="mb-3">
+					<input
+						class="form-control"
+						type="file"
+						id="testCert"
+						accept="application/pdf"
+					/>
+				</div>
+			</div>
+			<p class="text-end">pdf파일만 업로드 가능합니다</p>
+
+			<!-- 제출버튼 -->
+			<div class="text-center mt-5">
+				<button type="button" class="btn btn-primary btn-lg" @click="doSave()">
+					신청하기
+				</button>
+				<button type="button" class="btn btn-secondary btn-lg ms-4">
+					취소하기
+				</button>
+			</div>
+		</div>
 	</div>
 </template>
 <script>
@@ -350,8 +334,23 @@ export default {
 	components: {},
 	data() {
 		return {
-			ZipCode: '',
-			addressKakao: ''
+			extraRoadAddr: '',
+			cert_spec: [],
+			applier: {
+				name_kor: '',
+				name_eng: '',
+				mobile: '',
+				email: '',
+				// scheme: [],
+				type_cert: '',
+				applier_address: '',
+				postcode: '',
+				detail_address: '',
+				career: '',
+				career_evidence: '',
+				career_cert: '',
+				logsheet: ''
+			}
 		}
 	},
 	setup() {},
@@ -359,19 +358,85 @@ export default {
 	mounted() {},
 	unmounted() {},
 	methods: {
+		async uploadFile(files) {
+			const r = await this.$upload('api/upload/file', files[0])
+			console.log(r)
+			this.applier.career = r.filename
+		},
+
 		showZipCode() {
 			new window.daum.Postcode({
 				oncomplete: (data) => {
 					console.log(data)
-					this.addressKakao = data.address
-					this.ZipCode = data.zonecode
+					this.applier.applier_address = data.address
+					// this.addressKakao = data.address
+					this.applier.postcode = data.zonecode
+					this.extraRoadAddr = data.bname
+					if ((data.buildingName !== '') & (data.apartment === 'Y')) {
+						this.applier.applier_address =
+							this.addressKakao + '(' + data.buildingName + ')'
+					}
 				}
 			}).open()
-			// 우편번호창이 열리고 선택했을때는
+		},
+		async doSave() {
+			if (this.applier.name_kor === '') {
+				return this.$swal('한글성명을 입력하세요')
+			}
+			if (this.applier.name_eng === '') {
+				return this.$swal('영문성명을 입력하세요')
+			}
+
+			this.$swal({
+				title: '등록을 신청하시겠습니까?',
+				// text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				cancelButtonText: '취소',
+				confirmButtonText: '저장'
+			}).then(async (result) => {
+				if (result.isConfirmed) {
+					const loader = this.$loading.show({ canCancel: false })
+
+					const r = await this.$post('http://localhost:3000/api/applier', {
+						param: this.applier
+					})
+
+					loader.hide()
+
+					console.log(r)
+
+					if (r.status === 200) {
+						this.$swal('신청정보가 정상적으로 제출되었습니다.')
+						// this.$router.push({
+						// path: '/supplier/detail',
+						// query: { supplier_id: r.data.insertId }
+						// })
+					}
+					this.applier = {
+						name_kor: '',
+						name_eng: '',
+						mobile: '',
+						email: '',
+						// scheme: [],
+						type_cert: '',
+						applier_address: '',
+						postcode: '',
+						detail_address: '',
+						career: '',
+						career_evidence: '',
+						career_cert: '',
+						logsheet: ''
+					}
+				}
+			})
 		}
 	}
 }
 </script>
+
 <style scoped>
 .minifooter {
 	margin-bottom: 100px;

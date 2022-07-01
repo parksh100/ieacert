@@ -17,6 +17,7 @@ require("dotenv").config({ path: `nodemailer/.env.${app.get("env")}` });
 const nodemailer = require("./nodemailer");
 
 app.use("/static/images", express.static("public/images"));
+app.use("/static/uploads", express.static("uploads"));
 
 app.use(
   express.json({
@@ -108,6 +109,9 @@ app.use("/api/shipper", shipperRoute);
 
 const orderRoute = require("./routes/order");
 app.use("/api/order", orderRoute);
+
+const applierRoute = require("./routes/applier");
+app.use("/api/applier", applierRoute);
 
 // app.post("/login", (req, res) => {
 //   const { email, pw } = req.body.param;
