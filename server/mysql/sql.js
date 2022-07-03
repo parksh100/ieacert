@@ -21,5 +21,6 @@ module.exports = {
   orderInsert: `insert into order_header set ?`,
   orderItemInsert: `insert into order_detail (order_id, product_id, order_qty) values ?`,
   shipperMultipleInsert: `insert into product_shipper (shipper_name, phone, address, delivery_yn, active_yn) values ?`,
-  applierInsert: `insert into cert_apply set ?`,
+  applierInsert: `insert into cert_applier set ?`,
+  applierList: `select * from cert_applier`,
 };

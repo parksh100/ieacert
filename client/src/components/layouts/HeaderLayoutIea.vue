@@ -201,10 +201,31 @@
 								고객센터
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">공지사항</a></li>
-								<li><a class="dropdown-item" href="#">부정심사원고발</a></li>
-								<li><a class="dropdown-item" href="#">고객불만/이의제기</a></li>
-								<li><a class="dropdown-item" href="#">이메일문의</a></li>
+								<!-- <li>
+									<a
+										class="nav-link"
+										:class="{ active: $route.path == '/contact/notice' }"
+										@click="goToMenu('/contact/notice')"
+										>공지사항</a
+									>
+								</li> -->
+								<li>
+									<a
+										class="nav-link"
+										:class="{ active: $route.path == '/contact/appeal' }"
+										@click="goToMenu('/contact/appeal')"
+										>부정심사원고발</a
+									>
+								</li>
+								<li>
+									<a
+										class="nav-link"
+										:class="{ active: $route.path == '/contact/complaint' }"
+										@click="goToMenu('/contact/complaint')"
+										>고객불만/이의제기</a
+									>
+								</li>
+								<!-- <li><a class="dropdown-item" href="#">이메일문의</a></li> -->
 							</ul>
 						</li>
 
