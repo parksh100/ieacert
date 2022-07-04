@@ -116,8 +116,8 @@ app.use("/api/shipper", shipperRoute);
 const orderRoute = require("./routes/order");
 app.use("/api/order", orderRoute);
 
-const applierRoute = require("./routes/applier");
-app.use("/api/applier", applierRoute);
+const certRoute = require("./routes/cert");
+app.use("/api/cert", certRoute);
 
 // app.post("/login", (req, res) => {
 //   const { email, pw } = req.body.param;

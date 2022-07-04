@@ -2,30 +2,25 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("../mysql");
 
-router.get("/", async (req, res) => {
-  const applierList = await mysql.query("applierList");
-  res.send(applierList);
+router.get("/issue", async (req, res) => {
+  const certList = await mysql.query("certList");
+  res.send(certList);
 });
 
-// 하나만 조회하기
-router.get("/category/:product_category_id", async (req, res) => {
-  const { product_category_id } = req.params;
-  const categoryList = await mysql.query("categoryDetail", product_category_id);
-  res.send(categoryList);
-});
+// router.get("/category/:product_category_id", async (req, res) => {
+//   const { product_category_id } = req.params;
+//   const categoryList = await mysql.query("categoryDetail", product_category_id);
+//   res.send(categoryList);
+// });
 
 // post방식으로 조회
-router.post("/category/search", async (req, res) => {
-  const categoryList = await mysql.query(
-    "categoryListByCondition",
-    req.body.param
-  );
-  res.send(categoryList);
+router.post("/issue/search", async (req, res) => {
+  const certList = await mysql.query("certListByCondition", req.body.param);
+  res.send(certList);
 });
 
-// 생성 api
-router.post("/", async (req, res) => {
-  const result = await mysql.query("applierInsert", req.body.param);
+router.post("/category", async (req, res) => {
+  const result = await mysql.query("categoryInsert", req.body.param);
   res.send(result);
 });
 
@@ -63,6 +58,7 @@ router.get("/:product_id", async (req, res) => {
   );
   res.send(productDetail[0]);
 });
+
 
 // 제품 리스트 블러오기 api
 router.get("/", async (req, res) => {
