@@ -188,6 +188,30 @@ const routes = [
 			import(
 				/* webpackChunkName: "register" */ '../views/register/CertRegisterProcessView.vue'
 			)
+	},
+	{
+		path: '/contact/appeal',
+		name: 'contact/appeal',
+		component: () =>
+			import(
+				/* webpackChunkName: "contact" */ '../views/contact/AppealView.vue'
+			)
+	},
+	{
+		path: '/contact/complaint',
+		name: 'contact/complaint',
+		component: () =>
+			import(
+				/* webpackChunkName: "contact" */ '../views/contact/ComplaintView.vue'
+			)
+	},
+	{
+		path: '/certification/search',
+		name: 'certification/search',
+		component: () =>
+			import(
+				/* webpackChunkName: "certification" */ '../views/certification/SearchCertView.vue'
+			)
 	}
 ]
 

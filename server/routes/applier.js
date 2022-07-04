@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("../mysql");
 
-router.get("/category", async (req, res) => {
-  const categoryList = await mysql.query("categoryList");
-  res.send(categoryList);
+router.get("/", async (req, res) => {
+  const applierList = await mysql.query("applierList");
+  res.send(applierList);
 });
 
+// 하나만 조회하기
 router.get("/category/:product_category_id", async (req, res) => {
   const { product_category_id } = req.params;
   const categoryList = await mysql.query("categoryDetail", product_category_id);
