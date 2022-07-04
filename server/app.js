@@ -17,7 +17,7 @@ require("dotenv").config({ path: `nodemailer/.env.${app.get("env")}` });
 const nodemailer = require("./nodemailer");
 
 app.use("/static/images", express.static("public/images"));
-app.use("/static/uploads", express.static("uploads"));
+app.use("/static/files", express.static("uploads"));
 
 app.use(
   express.json({
@@ -73,6 +73,7 @@ app.use(
   })
 );
 
+// 이미지 업로드
 const imageStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/images"); // 전송된 파일이 저장되는 디렉토리
@@ -84,6 +85,9 @@ const imageStorage = multer.diskStorage({
 
 const imageUpload = multer({ storage: imageStorage });
 
+
+// 파일업로드 api
+
 const fileStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads"); // 전송된 파일이 저장되는 디렉토리
@@ -94,6 +98,8 @@ const fileStorage = multer.diskStorage({
 });
 
 const fileUpload = multer({ storage: fileStorage });
+
+// 라우트등록
 
 const productRoute = require("./routes/product");
 app.use("/api/product", productRoute);

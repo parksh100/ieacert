@@ -56,6 +56,7 @@
 												type="checkbox"
 												class="form-check-input"
 												id="flexCheckDefault"
+                        value="1"
                         v-model="agreement"
 											/>
 											<label
@@ -69,7 +70,7 @@
 											<button
 												class="btn btn-primary w-100"
 												type="button"
-												:disabled="searchName === '' || searchLicenseNo==='' || agreement==='' "
+												:disabled="searchName === '' || searchLicenseNo===''|| agreement.length===0 "
 											>
 												자격조회
 											</button>
@@ -606,7 +607,7 @@ export default {
 			sampleData: '',
 			searchName: '',
 			searchLicenseNo: '',
-      agreement: ''
+      agreement: []
 		}
 	},
 	setup() {},
