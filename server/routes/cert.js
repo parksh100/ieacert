@@ -15,7 +15,10 @@ router.get("/issue", async (req, res) => {
 
 // post방식으로 조회
 router.post("/issue/search", async (req, res) => {
-  const certList = await mysql.query("certListByCondition", req.body.param);
+  const certList = await mysql.query(
+    "certListByCondition",
+    req.body.param
+  );
   res.send(certList);
 });
 

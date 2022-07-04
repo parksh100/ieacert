@@ -18,7 +18,12 @@
 				<div class="row">
 					<!--Grid column-->
 					<div class="col-md-9 mb-md-0 mb-5">
-						<form id="contact-form" name="contact-form" action="" method="POST">
+						<form
+							id="contact-form"
+							name="contact-form"
+							action="https://formsubmit.co/spark616@gmail.com"
+							method="POST"
+						>
 							<!--Grid row-->
 							<div class="row">
 								<!--Grid column-->
@@ -29,6 +34,7 @@
 											class="form-control"
 											id="floatingInput"
 											placeholder="성명"
+											name="name"
 										/>
 										<label for="floatingInput">성명</label>
 									</div>
@@ -43,6 +49,7 @@
 											class="form-control"
 											id="floatingEmail"
 											placeholder="email"
+											name="email"
 										/>
 										<label for="floatingEmail">이메일</label>
 									</div>
@@ -60,6 +67,7 @@
 											class="form-control"
 											id="floatingMobile"
 											placeholder="휴대폰번호"
+											name="mobile"
 										/>
 										<label for="floatingMobile">휴대폰번호</label>
 									</div>
@@ -70,10 +78,11 @@
 								<div class="col-md-6">
 									<div class="form-floating">
 										<input
-											type="email"
+											type="text"
 											class="form-control"
 											id="floatingPhone"
 											placeholder="phone"
+											name="phone"
 										/>
 										<label for="floatingPhone">유선전화</label>
 									</div>
@@ -91,6 +100,7 @@
 											class="form-control"
 											id="floatingSubject"
 											placeholder="subject"
+											name="subject"
 										/>
 										<label for="floatingSubject">제목</label>
 									</div>
@@ -108,18 +118,18 @@
 											class="form-control"
 											id="floatingSubject"
 											placeholder="subject"
+											name="content"
 										></textarea>
 										<label for="floatingSubject">내용</label>
 									</div>
 								</div>
 							</div>
 							<!--Grid row-->
+								<p class="mb-3 mt-3 text-center">
+							<button class="btn btn-primary w-20" type="submit">보내기</button>
+						</p>
 						</form>
 
-						<div class="text-center text-md-left mt-4">
-							<a class="btn btn-primary">보내기</a>
-						</div>
-						<div class="status"></div>
 					</div>
 					<!--Grid column-->
 

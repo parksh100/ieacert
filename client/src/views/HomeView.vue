@@ -508,12 +508,13 @@
 						</div>
 
 						<!-- form태그 -->
-						<form action="">
+						<form action="https://formsubmit.co/a76ae492a66f51e0610cd167a1dea28c" method="POST">
 							<div class="mb-3">
 								<input
 									type="text"
 									class="form-control"
 									placeholder="Your name"
+									name="name"
 								/>
 							</div>
 							<div class="mb-3">
@@ -521,6 +522,7 @@
 									type="email"
 									class="form-control"
 									placeholder="Your email"
+									name="email"
 								/>
 							</div>
 							<div class="mb-3">
@@ -528,6 +530,7 @@
 									class="form-control"
 									rows="3"
 									placeholder="궁금하신 내용을 입력해주세요!"
+									name="message"
 								></textarea>
 							</div>
 							<div class="mb-3">
@@ -541,7 +544,7 @@
 								>
 							</div>
 							<p class="mb-3">
-								<button class="btn btn-primary w-100">Send!</button>
+								<button class="btn btn-primary w-100" type="submit">Send!</button>
 							</p>
 						</form>
 					</div>

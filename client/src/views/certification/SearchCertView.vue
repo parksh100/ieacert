@@ -4,9 +4,20 @@
 		<hr class="my-5" />
 		<div class="mt-5 minifooter">
 			<p>
-				자격인증번호를 입력하시면 현재 귀하의 자격등록여부와 상태를 조회하실 수
-				있습니다.
+				자격인증번호와 성명을 입력하시면 현재 귀하의 자격등록여부와 상태를
+				조회하실 수 있습니다.
 			</p>
+			<!-- <div class="mt-5 mb-2 row">
+				<label for="inputCertNo" class="col-sm-2 col-form-label">성명</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						id="inputCertNo"
+						v-model.trim="searchName"
+					/>
+				</div>
+			</div> -->
 			<div class="mt-5 mb-5 row">
 				<label for="inputCertNo" class="col-sm-2 col-form-label"
 					>자격번호</label
@@ -25,7 +36,7 @@
 			</div>
 
 			<!-- table -->
-			<table class="table table-striped mt-5">
+			<table class="table table-striped mt-5" v-if="list.length > 0">
 				<thead>
 					<tr>
 						<!-- <th scope="col-3">ID</th> -->
@@ -59,13 +70,12 @@ export default {
 		return {
 			list: [],
 			searchNo: ''
+			// searchName: ''
 		}
 	},
 	setup() {},
 	created() {},
-	async mounted() {
-		// this.list = await this.$get('/api/cert/issue')
-	},
+	async mounted() {},
 	unmounted() {},
 	methods: {
 		async getList() {
@@ -76,15 +86,16 @@ export default {
 				this.$swal('자격번호형식이 올바르지 않습니다.')
 				this.searchNo = ''
 			}
-
 			const loader = this.$loading.show({ canCancel: false })
+
 			this.list = (
 				await this.$post('/api/cert/issue/search', {
 					param: `${this.searchNo}`
 				})
 			).data
 
-			// console.log(this.list)
+			console.log(this.list)
+
 			loader.hide()
 		}
 	}
