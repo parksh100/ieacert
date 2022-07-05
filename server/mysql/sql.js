@@ -23,4 +23,5 @@ module.exports = {
   shipperMultipleInsert: `insert into product_shipper (shipper_name, phone, address, delivery_yn, active_yn) values ?`,
   certList: `select * from cert_issued`,
   certListByCondition: `select * from cert_issued where cert_no = ?`,
+  applyInsert: `insert into cert_applier set ?`,
 };

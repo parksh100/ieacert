@@ -77,7 +77,21 @@
 						>인증규격</label
 					>
 					<div class="col-sm-9">
-						<div class="form-check form-check-inline">
+						<select
+							class="form-select"
+							aria-label="Default select example"
+							v-model="applier.standard"
+						>
+							<option></option>
+							<option value="QMS">ISO9001</option>
+							<option value="EMS">ISO14001</option>
+							<option value="OHSMS">ISO45001</option>
+							<option value="QEMS">ISO9001;ISO14001</option>
+							<option value="QOHSMS">ISO9001;ISO45001</option>
+							<option value="EOHSMS">ISO14001;ISO45001</option>
+							<option value="QEOHSMS">ISO9001;ISO14001;ISO45001</option>
+						</select>
+						<!-- <div class="form-check form-check-inline">
 							<input
 								class="form-check-input"
 								type="checkbox"
@@ -106,7 +120,7 @@
 								v-model="cert_spec"
 							/>
 							<label class="form-check-label" for="ohsms">ISO45001</label>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -245,7 +259,9 @@
 					<label for="phone" class="col-sm-3 col-form-label fw-bold"
 						>첨부서류</label
 					>
-					<div class="col-sm-9 text-center mt-2">이력서</div>
+					<div class="col-sm-9 text-center mt-2">
+						이력서, 경력기술서, 합격증, 자격증
+					</div>
 				</div>
 			</div>
 			<div class="col-7">
@@ -257,9 +273,14 @@
 						accept="application/pdf"
 						@change="uploadFile($event.target.files)"
 					/>
+					<!-- <p class="mt-1">
+						<router-link to=""></router-link>
+						<i class="fa-solid fa-file-pdf fa-2x"></i>{{ applier.career }}
+					</p> -->
+					<!-- pdf아이콘 삽입해서 routelink to걸어서 바로 볼수 있게 조치 -->
 				</div>
 			</div>
-			<div class="col-5">
+			<!-- <div class="col-5">
 				<div class="mb-3 row">
 					<label for="phone" class="col-sm-3 col-form-label fw-bold"
 						>첨부서류</label
@@ -274,6 +295,7 @@
 						type="file"
 						id="careerRef"
 						accept="application/pdf"
+						@change="uploadFile($event.target.files)"
 					/>
 				</div>
 			</div>
@@ -293,6 +315,7 @@
 						type="file"
 						id="testCert"
 						accept="application/pdf"
+						@change="uploadFile($event.target.files)"
 					/>
 				</div>
 			</div>
@@ -312,10 +335,13 @@
 						type="file"
 						id="testCert"
 						accept="application/pdf"
+						@change="uploadFile($event.target.files)"
 					/>
 				</div>
-			</div>
-			<p class="text-end">pdf파일만 업로드 가능합니다</p>
+			</div> -->
+			<p class="text-end text-danger">
+				<i class="fa-solid fa-asterisk"></i> pdf파일만 업로드 가능합니다
+			</p>
 
 			<!-- 제출버튼 -->
 			<div class="text-center mt-5">
@@ -336,20 +362,21 @@ export default {
 		return {
 			extraRoadAddr: '',
 			cert_spec: [],
+			fileSrc: '',
 			applier: {
 				name_kor: '',
 				name_eng: '',
 				mobile: '',
 				email: '',
-				// scheme: [],
+				standard: '',
 				type_cert: '',
 				applier_address: '',
 				postcode: '',
 				detail_address: '',
-				career: '',
-				career_evidence: '',
-				career_cert: '',
-				logsheet: ''
+				career: ''
+				// career_evidence: '',
+				// career_cert: '',
+				// logsheet: ''
 			}
 		}
 	},
@@ -361,6 +388,7 @@ export default {
 		async uploadFile(files) {
 			const r = await this.$upload('api/upload/file', files[0])
 			console.log(r)
+			this.fileSrc = `http://localhost:3000/static/files/${r.filename}`
 			this.applier.career = r.filename
 		},
 
@@ -386,6 +414,24 @@ export default {
 			if (this.applier.name_eng === '') {
 				return this.$swal('영문성명을 입력하세요')
 			}
+			if (this.applier.mobile === '') {
+				return this.$swal('휴대폰번호를 입력하세요')
+			}
+			if (this.applier.email === '') {
+				return this.$swal('이메일을 입력하세요')
+			}
+			if (this.applier.standard === '') {
+				return this.$swal('규격을 입력하세요')
+			}
+			if (this.applier.type_cert === '') {
+				return this.$swal('인증유형을 입력하세요')
+			}
+			if (this.applier.applier_address === '') {
+				return this.$swal('주소를 입력하세요')
+			}
+			if (this.applier.career === '') {
+				return this.$swal('첨부파일을 입력하세요')
+			}
 
 			this.$swal({
 				title: '등록을 신청하시겠습니까?',
@@ -400,9 +446,12 @@ export default {
 				if (result.isConfirmed) {
 					const loader = this.$loading.show({ canCancel: false })
 
-					const r = await this.$post('http://localhost:3000/api/applier', {
-						param: this.applier
-					})
+					const r = await this.$post(
+						'http://localhost:3000/api/cert/apply/register',
+						{
+							param: this.applier
+						}
+					)
 
 					loader.hide()
 
@@ -420,15 +469,15 @@ export default {
 						name_eng: '',
 						mobile: '',
 						email: '',
-						// scheme: [],
+						standard: '',
 						type_cert: '',
 						applier_address: '',
 						postcode: '',
 						detail_address: '',
-						career: '',
-						career_evidence: '',
-						career_cert: '',
-						logsheet: ''
+						career: ''
+						// career_evidence: '',
+						// career_cert: '',
+						// logsheet: ''
 					}
 				}
 			})
